@@ -15,6 +15,8 @@ public class JsonUtilsTest {
 	Map<String, Object> map = null;	
 	List<Map<String, Object>> list = null;
 	
+	String jsonStr = "{\"key01\":\"value01\",\"key02\":\"value02\",\"key03\":\"value03\",\"key04\":\"value04\",\"key05\":\"value05\"}";
+	
 	JSONObject jsonObject = null;	
 	JSONArray jsonArray = null;
 	
@@ -66,6 +68,16 @@ public class JsonUtilsTest {
 		
 		System.out.println("JsonStringFromList : " + jsonStr);
 	}
+	
+	
+	@Test
+	public void testGetJsonObjectFromString() {
+		
+		JSONObject jsonObject = JsonUtils.getJsonObjectFromString(jsonStr);
+		
+		System.out.println("JsonObjectFromString : " + jsonObject);
+	}
+	
 	
 	@Test
 	public void testGetMapFromJsonObject() {

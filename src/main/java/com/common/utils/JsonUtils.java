@@ -7,12 +7,17 @@ import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JsonUtils {
+/**
+ * JSON 관련된 유틸리티 클래스 
+ */
+public class JsonUtils { 
 
 	/**
 	 * Map을 JSONString으로 변환
@@ -51,6 +56,29 @@ public class JsonUtils {
 	}
 	
 	/**
+	 * String을 JSONObject를 변환
+	 * 
+	 * @param jsonStr
+	 * @return jsonObject
+	 */
+	public static JSONObject getJsonObjectFromString(String jsonStr) { 
+	
+		JSONObject jsonObject = new JSONObject();
+		
+		JSONParser jsonParser = new JSONParser();
+		
+		try {
+			
+			jsonObject = (JSONObject) jsonParser.parse(jsonStr);
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return jsonObject;
+	}
+	
+	/**
 	 * JsonObject를 Map<String, String>으로 변환
 	 * 
 	 * @param jsonObject
@@ -60,7 +88,7 @@ public class JsonUtils {
 	public static Map<String, Object> getMapFromJsonObject(JSONObject jsonObject) { 
 
 		Map<String, Object> map = null;
-
+		
 		try {
 
 			map = new ObjectMapper().readValue(jsonObject.toJSONString(), Map.class);
@@ -72,6 +100,7 @@ public class JsonUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		return map;
 	}
 	
@@ -91,7 +120,7 @@ public class JsonUtils {
 
 			for (int i = 0; i < jsonSize; i++) {
 
-				Map<String, Object> map = getMapFromJsonObject((JSONObject) jsonArray.get(i));
+				Map<String, Object> map = getMapFromJsonObject((JSONObject)jsonArray.get(i));
 				list.add(map);
 			}
 		}
