@@ -38,7 +38,7 @@ public class JsonUtils {
 	}
 
 	/**
-	 * List<Map>을 jsonString으로 변환
+	 * List<Map>을 JSONString으로 변환
 	 * 
 	 * @param list
 	 * @return String
@@ -79,7 +79,7 @@ public class JsonUtils {
 	}
 	
 	/**
-	 * JsonObject를 Map<String, String>으로 변환
+	 * JSONObject를 Map<String, String>으로 변환
 	 * 
 	 * @param jsonObject
 	 * @return map
@@ -105,7 +105,7 @@ public class JsonUtils {
 	}
 	
 	/**
-	 * JsonArray를 List<Map<String, String>>으로 변환
+	 * JSONArray를 List<Map<String, String>>으로 변환
 	 * 
 	 * @param jsonArray
 	 * @return list
